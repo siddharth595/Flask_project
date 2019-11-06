@@ -1,9 +1,7 @@
 from flask import Flask,render_template,redirect,url_for,flash
-from form_customer import RegistrationForm, LoginForm
+from restro.form_customer import RegistrationForm, LoginForm
+from restro import app
 
-app=Flask(__name__)
-
-app.config['SECRET_KEY']='67b0b4c317c234642ba164ff2aea68ec'
 
 @ app.route("/")
 def first_page():
@@ -21,7 +19,7 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f"Account successfully created for {form.username.data}","success")
+        flash(f"Account successfully created for {form.name.data}","success")
     return render_template("register.html" , form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -34,6 +32,3 @@ def login():
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', form=form)
-
-if __name__=='__main__':
-    app.run(debug=True)
