@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField,TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField,TextAreaField,FloatField,IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo,ValidationError
 from restro.models import User
 
@@ -23,7 +23,7 @@ class RegistrationForm(FlaskForm):
 
 
         if user:
-            raise ValidtionError('The above email is already registered.Please register with another one')
+            raise ValidationError('The above email is already registered.Please register with another one')
 
 
     def validate_phone_number(self,phone_number):
@@ -31,7 +31,7 @@ class RegistrationForm(FlaskForm):
 
 
         if user:
-            raise ValidtionError('The above mobile number is already registered.Please register with another one')
+            raise ValidationError('The above mobile number is already registered.Please register with another one')
 
 
 
@@ -49,4 +49,13 @@ class New_Review(FlaskForm):
                         validators=[DataRequired()])
     content = TextAreaField('Your Review', validators=[DataRequired()])
     
+    submit = SubmitField('Submit Your Review')
+
+
+
+class New_Review_food(FlaskForm):
+    item_name_food = StringField('Name of food item',
+                        validators=[DataRequired()])
+    content_food = TextAreaField('Your Review', validators=[DataRequired()])
+    rating_food= IntegerField('Rating out of 5', validators=[DataRequired()])
     submit = SubmitField('Submit Your Review')

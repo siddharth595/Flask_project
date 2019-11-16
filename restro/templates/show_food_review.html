@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for review in review %}
+        <article class="media content-section">
+          
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ review.author.name }}</a>
+              <small class="text-muted">{{ review.date_posted_food.strftime('%d-%m-%Y') }}</small>
+            </div>
+            <h2 class="article-title">{{ review.item_name_food }}</h2>
+            <p class="article-content">{{ review.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

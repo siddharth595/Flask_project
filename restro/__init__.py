@@ -5,6 +5,7 @@ from flask_login import LoginManager
 
 
 
+
 app=Flask(__name__)
 
 app.config['SECRET_KEY']='67b0b4c317c234642ba164ff2aea68ec'

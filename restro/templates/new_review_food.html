@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Describe your favorite dish!!</legend>
+
+            <div class="form-group">
+                    {{ form.item_name_food.label(class="form-control-label") }}
+
+                    {% if form.item_name_food.errors %}
+                        {{ form.item_name_food(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.item_name_food(class="form-control form-control-lg") }}
+                    {% endif %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.content_food.label(class="form-control-label") }}
+                {% if form.content_food.errors %}
+                    {{ form.content_food(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.content_food(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.rating_food.label(class="form-control-label") }}
+
+                {% if form.rating_food.errors %}
+                    {{ form.rating_food(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.rating_food.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.rating_food(class="form-control form-control-lg") }}
+                {% endif %}
+        </div>
+           
+
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
