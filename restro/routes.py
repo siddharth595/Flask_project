@@ -87,7 +87,14 @@ def write_review_food():
 
 
     
-@app.route("/show_review")
+@app.route("/show_food_review")
+@login_required
 def show_review():
     reviews=Review_food.query.all()
     return render_template('show_food_review.html',review=reviews)
+
+
+
+@app.route("/menu_card")
+def menu_card():
+    return render_template('menu_card.html')

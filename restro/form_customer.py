@@ -57,5 +57,5 @@ class New_Review_food(FlaskForm):
     item_name_food = StringField('Name of food item',
                         validators=[DataRequired()])
     content_food = TextAreaField('Your Review', validators=[DataRequired()])
-    rating_food= IntegerField('Rating out of 5', validators=[DataRequired()])
+    rating_food= FloatField('Rating out of 5', validators=[DataRequired()])
     submit = SubmitField('Submit Your Review')

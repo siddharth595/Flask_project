@@ -3,6 +3,7 @@ from datetime import datetime
 from flask_login import UserMixin
 
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -35,11 +36,13 @@ class Review(db.Model):
 
 
 class Review_food(db.Model):
+    
+    
     id = db.Column(db.Integer, primary_key=True)
     item_name_food = db.Column(db.String(100), nullable=False)
     date_posted_food = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content_food = db.Column(db.Text, nullable=False)
-    rating_food =db.Column(db.Integer,nullable=False)
+    rating_food =db.Column(db.Float,nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
