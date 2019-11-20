@@ -18,15 +18,23 @@
 
     <style>
 
-
-    
+  .c{
+    background:rgb(105, 45, 75);
+  }
+  body{
+    background-image:url("../static/m.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:100%;
+  }
     </style>
 </head>
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-          <div class="container">
-            <a class="navbar-brand mr-4" href="/">Restro</a>
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top c">
+          
+          <div class="container-fluid">
+            <a class="navbar-brand mr-3" href="/">Restro</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,7 +55,7 @@
                     <a class="dropdown-item" href="/write_review_food">About FoodItem</a>
                     
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/write_review">About restaurant and services</a>
+                    <div> <a class="dropdown-item" href="/write_review">About restaurant and services</a></div>
                   </div>
                 </div>
                 {% else %}
@@ -55,7 +63,8 @@
                 <a class="nav-item nav-link" href="/register">Register</a>
                 {% endif %}
               </div>
-            </div>
+            
+          </div>
           </div>
         </nav>
       </header>
@@ -78,12 +87,11 @@
           <div class="col-md-4">
             <div class="content-section">
               <h3>Our Sidebar</h3>
-              <p class='text-muted'>You can put any information here you'd like.
+              <p class='text-muted'>
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-dark" style="background-color:lightpink;"  ><a href="/menu_card">Menu card</a></li>
-                  <li class="list-group-item list-group-item-light"><a href="/show_food_review">View Food Review</li>
-                  <li class="list-group-item list-group-item-light">Calendars</li>
-                  <li class="list-group-item list-group-item-light">etc</li>
+                  <li class="list-group-item list-group-item-light" style="background-color:rgb(107, 95, 97);"><a href="/show_food_review">View Food Review</li>
+             
                 </ul>
               </p>
             </div>

@@ -4,44 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Restro</title>
+    <!--
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    -->>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
-
-</head>
-
-
-<body >
-  <h>Welcome to Restro</h>>
    
-    <div >
-              
-       
-     
-          <pre>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body{
+          background-image:url("../static/m.jpg");
+          background-size: cover;
+          background-repeat: no-repeat;
+          width:100%;
+        }
 
-            At Restro, we believe in everything at its prime. And that change is good for the palate. 
-
-            Unexpected flavors forged from nature and mingled with flourish. Vibrant herbs grown as close to home 
-                          as it gets (they’re from the rooftop garden). The freshest ingredients 
-                                      responsibly sourced both near and far. 
-
-             This is modern bistronomy—casual fine dining where experimentation becomes the everyday. 
-                                      Experience cuisine that’s constantly evolving in a setting that’s forever inviting. 
-
-          </pre>
-        </div>
+        .p
+        {
+          color:rgb(31, 22, 31)        }
+          </style>
+  </head>
+<body>
     
-    <div  style="text-align:center;">
-    
-      <a href={{url_for('customer_home')}}><button type="button" class="btn btn-primary btn-lg btn-block" >Enter</button></a>
-           
-    </div>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           
-        
-    
+          <div class="container-fluid">
+            <a class="navbar-brand mr-3" href="/">Restro</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="/customer_home">Home</a>
+                <a class="nav-item nav-link" href="/about">About</a>
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                {%if current_user.is_authenticated%}
+                <a class="nav-item nav-link" href="/logout">Logout</a>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Write Review
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/write_review_food">About FoodItem</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <div> <a class="dropdown-item" href="/write_review">About restaurant and services</a></div>
+                  </div>
+                </div>
+                {% else %}
+                <a class="nav-item nav-link" href="/login">Login</a>
+                <a class="nav-item nav-link" href="/register">Register</a>
+                {% endif %}
+              </div>
+          </div>
+        </nav>
+      </header>
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+          </div>
+        </main>
+
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-light">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 font-italic">Welcome to Restro</h1>
+    <p class="text-dark" >
+
+      At Restro, we believe in everything at its prime. And that change is good for the palate. 
+
+      Unexpected flavors forged from nature and mingled with flourish. Vibrant herbs grown as close to home 
+                    as it gets (they’re from the rooftop garden). The freshest ingredients 
+                                responsibly sourced both near and far. 
+
+       This is modern bistronomy—casual fine dining where experimentation becomes the everyday. 
+                                Experience cuisine that’s constantly evolving in a setting that’s forever inviting. 
+
+    </p>
+    <p class="lead mb-0">  <a href={{url_for('customer_home')}}><button type="button" class="btn btn-primary btn-lg" >Enter</button></a></p>
+  </div>
+</div>
+</div>
 </body>
 </html>
