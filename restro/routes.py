@@ -75,6 +75,7 @@ def write_review():
         review=Review(item_name=form.item_name.data,content=form.content.data,author=current_user)
         db.session.add(review)
         db.session.commit()
+        return redirect(url_for('customer_home'))
 
     return render_template('new_review.html',form=form)
 
@@ -89,6 +90,7 @@ def write_review_food():
         review_food=Review_food(item_name_food=form.item_name_food.data,content_food=form.content_food.data,rating_food=form.rating_food.data, author=current_user)
         db.session.add(review_food)
         db.session.commit()
+        return redirect(url_for('customer_home'))
 
     return render_template('new_review_food.html',form=form)
 
